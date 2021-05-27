@@ -31,3 +31,22 @@ nav .nav-link:hover {
   background-color: #333;
   color: #fdf9f9;
 }
+
+@media(max-width: 991px) {
+  nav {
+    flex-direction: column;
+  }
+  nav .nav-items {
+    flex-direction: column;
+  }
+  nav .nav-item {
+    border-left: none;
+    border-top: 1px solid #b7b7b7;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  nav .nav-link {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+}
