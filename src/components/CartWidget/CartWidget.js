@@ -4,7 +4,7 @@ import {ReactComponent as CartIcon} from '../../assets/images/shopping-cart.svg'
 function CartWidget() {
   return (
     <div className="cart-widget">
-      <button onClick={() => console.log('aaaa')}>
+      <button>
         <CartIcon />
       </button>
     </div>

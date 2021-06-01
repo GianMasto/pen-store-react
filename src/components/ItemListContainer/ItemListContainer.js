@@ -2,7 +2,7 @@ import './ItemListContainer.css';
 
 function ItemListContainer({greeting}) {
   return (
-    <div class="container">
+    <div className="container">
       <h2>{greeting}</h2>
     </div>
   );
