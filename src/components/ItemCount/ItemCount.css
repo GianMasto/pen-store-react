@@ -1,0 +1,65 @@
+.item-count-container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  max-width: 100%;
+}
+
+.controls {
+  display: flex;
+  width: 100%;
+  border: 1px solid #b7b7b7;
+}
+.controls button {
+  padding: 10px;
+  width: 48px;
+  font-weight: 100;
+  font-size: 22px;
+}
+.controls span:first-child {
+  border-right: 1px solid #b7b7b7;
+}
+.controls span:last-child {
+  border-left: 1px solid #b7b7b7;
+}
+.counter-number {
+  margin: auto;
+}
+.item-count-container button.disabled {
+  background: #eee;
+  cursor: not-allowed;
+}
+.item-count-container button.disabled:hover {
+  background: #eee;
+  color: #333;
+}
+.add-button {
+  border: 1px solid #b7b7b7;
+  border-top: none;
+  padding: 11px;
+}
+@media(max-width:280px) {
+  .item-count-container  {
+    width: 100%;
+  }
+  .controls {
+    flex-direction: column;
+  }
+  .controls span:first-child {
+    border-right: none;
+    border-bottom: 1px solid #b7b7b7;
+    width: 100%;
+  }
+  .controls span:last-child {
+    border-left: none;
+    border-top: 1px solid #b7b7b7;
+    width: 100%;
+  }
+  .controls button {
+    width: 100%;
+    padding: 3px;
+  }
+  .counter-number {
+    padding: 10px;
+  }
+}
