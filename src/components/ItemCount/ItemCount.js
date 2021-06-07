@@ -5,10 +5,10 @@ import './ItemCount.css'
 
 function ItemCount({stock, inital, onAdd}) {
 
-  const [itemsCounter, setItemsCounter] = useState(inital || 0)
+  const [itemsCounter, setItemsCounter] = useState(inital || 1)
 
   const onItemsCounterSubstract = () => {
-    if(itemsCounter > 0) {
+    if(itemsCounter > 1) {
       setItemsCounter(itemsCounter - 1)
     } 
   }
@@ -23,7 +23,7 @@ function ItemCount({stock, inital, onAdd}) {
     <div className="item-count-container">
       <div className="controls">
         <span>
-          <button className={itemsCounter <= 0 ? 'disabled' : null} onClick={onItemsCounterSubstract}>-</button>
+          <button className={itemsCounter <= 1 ? 'disabled' : null} onClick={onItemsCounterSubstract}>-</button>
         </span>
         <span className="counter-number">
           <p>{itemsCounter}</p>
@@ -32,7 +32,7 @@ function ItemCount({stock, inital, onAdd}) {
           <button className={itemsCounter >= stock ? 'disabled' : null} onClick={onItemsCounterAdd}>+</button>
         </span>
       </div>
-      <button className={`add-button ${itemsCounter <= 0 ? ' disabled' : ''}`} onClick={() => onAdd(itemsCounter)}>Agregar al carrito</button>
+      <button className='add-button' onClick={() => onAdd(itemsCounter)}>Agregar al carrito</button>
     </div>
   )
 }
