@@ -6,13 +6,13 @@ function ItemList({items}){
     <>
       {
         items.length > 0 ? 
-          <>
+          <div class="item-list">
           {
             items.map(item =>( 
               <Item item={item} key={item.id} />
             ))
           }
-          </> :
+          </div> :
           <p>Cargando productos...</p>
       }
     </>

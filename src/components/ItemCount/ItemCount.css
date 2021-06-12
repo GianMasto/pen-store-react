@@ -1,14 +1,14 @@
 .item-count-container {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 100%;
   max-width: 100%;
 }
 
 .controls {
   display: flex;
   width: 100%;
-  border: 1px solid #b7b7b7;
+  border: var(--main-border);
 }
 .controls button {
   padding: 10px;
@@ -17,10 +17,10 @@
   font-size: 22px;
 }
 .controls span:first-child {
-  border-right: 1px solid #b7b7b7;
+  border-right: var(--main-border);
 }
 .controls span:last-child {
-  border-left: 1px solid #b7b7b7;
+  border-left: var(--main-border);
 }
 .counter-number {
   margin: auto;
@@ -34,9 +34,10 @@
   color: #333;
 }
 .add-button {
-  border: 1px solid #b7b7b7;
+  border: var(--main-border);
   border-top: none;
   padding: 11px;
+  height: 48px;
 }
 @media(max-width:280px) {
   .item-count-container  {
@@ -47,12 +48,12 @@
   }
   .controls span:first-child {
     border-right: none;
-    border-bottom: 1px solid #b7b7b7;
+    border-bottom: var(--main-border);
     width: 100%;
   }
   .controls span:last-child {
     border-left: none;
-    border-top: 1px solid #b7b7b7;
+    border-top: var(--main-border);
     width: 100%;
   }
   .controls button {

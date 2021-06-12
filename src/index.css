@@ -1,3 +1,6 @@
+:root {
+  --main-border: 1px solid #b7b7b7;
+}
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -57,7 +60,7 @@ button:hover {
   padding: 2rem;
 }
 #root {
-  border: 1px solid #b7b7b7;
+  border: var(--main-border);
   display: flex;
   flex-direction: column;
   min-height: 100vh;

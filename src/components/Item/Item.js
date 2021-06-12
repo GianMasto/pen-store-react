@@ -12,16 +12,18 @@ function Item({item}) {
 
 
   return(
-    <>
-      <div>
-        <img src={item.pictureUrl} alt={item.title} />
-        <p>{item.id}</p>
+    <div className="single-item">
+      <div className="item-info">
+        <div className="item-image-container">
+          <img src={item.pictureUrl} alt={item.title} />
+        </div>
+        <p>{/* item.id */}</p>
         <p>{item.title}</p>
-        <p>{item.description}</p>
+        <p>{ /* item.description */}</p>
         <p>${item.price}</p>
       </div>
       <ItemCount stock={10} initial={1} onAdd={onAdd} />
-    </>
+    </div>
   )
 }
 

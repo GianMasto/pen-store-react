@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid #b7b7b7;
+  border-left: var(--main-border);
   width: 120px;
 }
 .cart-widget button {
@@ -39,7 +39,7 @@
   .cart-widget {
     width: 100%;
     border-left: none;
-    border-top: 1px solid #b7b7b7;
+    border-top: var(--main-border);
     height: 86px;
   }
 }
