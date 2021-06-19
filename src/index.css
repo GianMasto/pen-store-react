@@ -41,6 +41,9 @@ a, button, button svg{
   transition: all .3s cubic-bezier(0.4, 0, 1, 1);
   display: inline-block;
 }
+a {
+  color: #333;
+}
 button {
   font-family: 'Quicksand', sans-serif;
   height: 100%;

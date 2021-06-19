@@ -6,7 +6,6 @@ nav {
 nav .logo {
   font-weight: 300;
   font-size: 2.5rem;
-  color: #333;
   padding: 2rem;
   margin-right: auto;
 }
@@ -31,7 +30,7 @@ nav .nav-link {
   width: 100%;
   text-align: center;
 }
-nav .nav-link:hover {
+nav .nav-link:hover, nav .nav-link.selected {
   background-color: #333;
   color: #fdf9f9;
 }

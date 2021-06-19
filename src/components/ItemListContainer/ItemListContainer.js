@@ -1,14 +1,20 @@
 import {useState, useEffect} from 'react'
+import { useParams } from 'react-router';
 
 import './ItemListContainer.css';
 import ItemList from '../../components/ItemList/ItemList'
 
 function ItemListContainer({greeting}) {
 
+  const {categoryId} = useParams()
   const [products, setProducts] = useState([])
   
   useEffect(() => {
+    let isMounted = true
+
     const fetchAndSetProducts = async () => {
+      setProducts([])
+
       const productPromise = new Promise(resolve => {
         setTimeout(() => {
           resolve([
@@ -51,16 +57,21 @@ function ItemListContainer({greeting}) {
           ])
         }, 2000)
       })
-  
-      setProducts(await productPromise)
+
+      let productsArr = await productPromise
+      
+      if(isMounted) {
+        setProducts(productsArr)
+      }
     }
 
     fetchAndSetProducts()
-  }, [])
+    return () => {isMounted = false}
+  }, [categoryId])
 
   return (
-    <div className="container">
-      <h2>{greeting}</h2>
+    <div className="item-list-container container">
+      <h2>{categoryId ? `categoría/${categoryId}` : greeting}</h2>
       <ItemList items={products} />
     </div>
   );

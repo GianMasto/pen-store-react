@@ -6,7 +6,7 @@ function ItemDetail({item}){
     <>
       {
         item.id  ? 
-          <div class="item-detail">
+          <div className="item-detail">
             <img src={item.pictureUrl} alt={item.title} />
             <p>{item.id}</p>
             <p>{item.title}</p>

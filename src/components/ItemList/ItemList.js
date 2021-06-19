@@ -6,7 +6,7 @@ function ItemList({items}){
     <>
       {
         items.length > 0 ? 
-          <div class="item-list">
+          <div className="item-list">
           {
             items.map(item =>( 
               <Item item={item} key={item.id} />

@@ -4,9 +4,10 @@
 }
 .item-info {
   border: var(--main-border);
-  border-bottom: none;
   height: 100%;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 .item-image-container {
   width: 100%;
@@ -25,4 +26,12 @@
   object-fit: contain;
   object-position: center;
   mix-blend-mode: multiply;
+}
+.item-info .item-title {
+  margin-bottom: 1rem;
+}
+.item-info .item-price {
+  margin-top: auto;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
