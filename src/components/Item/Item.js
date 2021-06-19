@@ -8,11 +8,11 @@ function Item({item}) {
   
 
 
-  // const onAdd = (count) => {
-  //   if(count > 0) {
-  //     console.log(`${count} productos comprados`);
-  //   } 
-  // }
+  const onAdd = (count) => {
+    if(count > 0) {
+      console.log(`${count} productos comprados`);
+    } 
+  }
 
 
   return(
@@ -24,7 +24,7 @@ function Item({item}) {
         <p className="item-title">{item.title}</p>
         <p className="item-price">${item.price}</p>
       </Link>
-      {/* <ItemCount stock={10} initial={1} onAdd={onAdd} /> */}
+      <ItemCount stock={10} initial={1} onAdd={onAdd} />
     </div>
   )
 }
