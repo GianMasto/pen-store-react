@@ -1,3 +1,28 @@
 img {
   mix-blend-mode: multiply;
 }
+.item-detail {
+  display: flex;
+  border: var(--main-border);
+}
+.item-detail > div {
+  width: 50%;
+  padding: 2rem;
+}
+.item-detail > div:first-child {
+  width: 50%;
+  border-right: var(--main-border);
+}
+
+.item-detail .item-title {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+.item-detail .item-description {
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.item-detail .item-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+}

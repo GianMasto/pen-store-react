@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 
 import './ItemDetailContainer.css';
 import ItemDetail from '../../components/ItemDetail/ItemDetail'
+import PRODUCTS_ARRAY from '../../PRODUCTS_ARRAY';
 
 function ItemDetailContainer({greeting}) {
 
@@ -15,22 +16,14 @@ function ItemDetailContainer({greeting}) {
     const fetchAndSetProduct = async () => {
       const productPromise = new Promise(resolve => {
         setTimeout(() => {
-          resolve(
-            {
-              id,
-              title: 'Montblanc Meisterstuck Doue Geometry Classique Platinum Fountain Pen',
-              description: 'The Meisterstück Doue Geometry Classique platinum fountain pen is both a timeless classic and a truly modern statement piece from Montblanc.',
-              price: 750.00,
-              pictureUrl: 'https://www.penshop.co.uk/thumbnails/0/13996/48/mbfpp1.png'
-            }
-          )
+          resolve(PRODUCTS_ARRAY.filter(prodObj => prodObj.id.toString() === id))
         }, 2000)
       })
 
       let productsArr = await productPromise
   
       if(isMounted) {
-        setProducts(productsArr)
+        setProducts(productsArr[0])
       }
     }
 

@@ -7,11 +7,15 @@ function ItemDetail({item}){
       {
         item.id  ? 
           <div className="item-detail">
-            <img src={item.pictureUrl} alt={item.title} />
-            <p>{item.id}</p>
-            <p>{item.title}</p>
-            <p>{item.description}</p>
-            <p>${item.price}</p>
+            <div className="item-detail-image-container">
+              <img src={item.pictureUrl} alt={item.title} />
+            </div>
+            <div className="item-detail-info-container">
+              <p class="item-id">{item.id}</p>
+              <h2 class="item-title">{item.title}</h2>
+              <p class="item-description">{item.description}</p>
+              <p class="item-price">${item.price}</p>
+            </div>
           </div> :
           <p>Cargando info...</p>
       }
