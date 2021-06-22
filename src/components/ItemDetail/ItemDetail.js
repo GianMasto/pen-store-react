@@ -11,10 +11,10 @@ function ItemDetail({item}){
               <img src={item.pictureUrl} alt={item.title} />
             </div>
             <div className="item-detail-info-container">
-              <p class="item-id">{item.id}</p>
-              <h2 class="item-title">{item.title}</h2>
-              <p class="item-description">{item.description}</p>
-              <p class="item-price">${item.price}</p>
+              <p className="item-id">{item.id}</p>
+              <h2 className="item-title">{item.title}</h2>
+              <p className="item-description">{item.description}</p>
+              <p className="item-price">${item.price}</p>
             </div>
           </div> :
           <p>Cargando info...</p>
