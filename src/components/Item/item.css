@@ -4,7 +4,6 @@
 }
 .item-info {
   border: var(--main-border);
-  border-bottom: 0;
   height: 100%;
   padding: 1.5rem;
   display: flex;

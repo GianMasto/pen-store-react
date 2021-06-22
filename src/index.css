@@ -44,7 +44,7 @@ a, button, button svg{
 a {
   color: #333;
 }
-button {
+button, .item-detail .finish-button {
   font-family: 'Quicksand', sans-serif;
   height: 100%;
   width: 100%;
@@ -55,7 +55,7 @@ button {
   background: transparent;
   cursor: pointer;
 }
-button:hover {
+button:hover, .item-detail .finish-button:hover {
   background: #333;
   color: #fdf9f9;
 }
