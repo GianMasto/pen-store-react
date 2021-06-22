@@ -12,9 +12,6 @@ function ItemDetail({item}){
     setItemAmout(count)
   }
 
-
-
-
   return(
     <>
       {
