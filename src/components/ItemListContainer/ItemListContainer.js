@@ -23,7 +23,7 @@ function ItemListContainer({greeting}) {
             resolve(PRODUCTS_ARRAY.filter(prodObj => prodObj.category === categoryId))
           }
           resolve(PRODUCTS_ARRAY)
-        }, 2000)
+        }, 1)
       })
 
       let productsArr = await productPromise

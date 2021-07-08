@@ -1,5 +1,6 @@
 :root {
   --main-border: 1px solid #b7b7b7;
+  --main-transition: all .3s cubic-bezier(0.4, 0, 1, 1);
 }
 html {
   box-sizing: border-box;
@@ -38,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 a, button, button svg{
   text-decoration: none;
-  transition: all .3s cubic-bezier(0.4, 0, 1, 1);
+  transition: var(--main-transition);
   display: inline-block;
 }
 a {

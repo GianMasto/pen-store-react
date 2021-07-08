@@ -17,7 +17,7 @@ function ItemDetailContainer({greeting}) {
       const productPromise = new Promise(resolve => {
         setTimeout(() => {
           resolve(PRODUCTS_ARRAY.filter(prodObj => prodObj.id.toString() === id))
-        }, 2000)
+        }, 1)
       })
 
       let productsArr = await productPromise

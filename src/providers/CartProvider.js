@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import CartContext from "../context/CartContext"
 
 export default function CartProvider({defaultValue = [], children}) {
@@ -13,9 +13,10 @@ export default function CartProvider({defaultValue = [], children}) {
 
   function removeItem(id) {
     if(!isInCart(id)) {
-      throw new Error(`No existe item con id ${item.id}`)
+      throw new Error(`No existe item con id ${id}`)
     }
-    setCart(cart.fitler(item => item.id !== id))
+
+    setCart(cart.filter(({item}) => item.id !== id))
   }
 
   function clear() {
@@ -23,10 +24,25 @@ export default function CartProvider({defaultValue = [], children}) {
   }
 
   function isInCart(id) {
-    cart.some(item => item.id === id)
+    return cart.some(({item}) => item.id === id)
   }
 
-  return <CartContext.Provider value={{cart, addItem, removeItem, clear, isInCart}}>
+  function getTotalPrice(){
+    let totalPrice = 0;
+    cart.forEach(({quantity, item}) => totalPrice = totalPrice + (item.price * quantity))
+    return totalPrice
+  }
+
+  
+  function getItemsAmount(){
+    let itemsAmount = 0;
+    cart.forEach(({quantity}) => itemsAmount = itemsAmount + quantity)
+    return itemsAmount
+  }
+
+
+
+  return <CartContext.Provider value={{cart, addItem, removeItem, clear, isInCart, getTotalPrice, getItemsAmount}}>
     {children}
   </CartContext.Provider>
 }

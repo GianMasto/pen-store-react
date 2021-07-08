@@ -1,0 +1,10 @@
+.cart-item {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.cart-item:first-child > * {
+  font-weight: 600;
+}
+.cart-item > * {
+  width: 25%;
+}
