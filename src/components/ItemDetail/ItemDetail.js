@@ -18,11 +18,12 @@ function ItemDetail({item}){
 
   return(
     <>
+    
       {
         item.id  ? 
           <div className="item-detail">
             <div className="item-detail-image-container">
-              <img src={item.pictureUrl} alt={item.title} />
+              <img src={item.image} alt={item.title} />
             </div>
             <div className="item-detail-info-container">
               <p className="item-id">{item.id}</p>

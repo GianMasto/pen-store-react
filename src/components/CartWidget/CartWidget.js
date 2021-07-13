@@ -17,7 +17,7 @@ function CartWidget() {
         <CartIcon />
         {
           getItemsAmount() != 0 && 
-            <span class="counter">{getItemsAmount()}</span>
+            <span className="counter">{getItemsAmount()}</span>
         }
       </button>
     </Link>

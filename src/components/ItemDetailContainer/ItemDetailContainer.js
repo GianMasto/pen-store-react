@@ -1,29 +1,37 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router';
+import { getFirestore } from '../../firebase';
 
 import './ItemDetailContainer.css';
 import ItemDetail from '../../components/ItemDetail/ItemDetail'
-import PRODUCTS_ARRAY from '../../PRODUCTS_ARRAY';
 
 function ItemDetailContainer({greeting}) {
 
   const {id} = useParams()
-  const [product, setProducts] = useState({})
+  const [product, setProduct] = useState({})
+  const [error, setError] = useState()
   
   useEffect(() => {
     let isMounted = true
 
     const fetchAndSetProduct = async () => {
-      const productPromise = new Promise(resolve => {
-        setTimeout(() => {
-          resolve(PRODUCTS_ARRAY.filter(prodObj => prodObj.id.toString() === id))
-        }, 1)
-      })
+      setError()
 
-      let productsArr = await productPromise
-  
-      if(isMounted) {
-        setProducts(productsArr[0])
+      const db = getFirestore()
+      const itemCollection = db.collection("items")
+      const item = itemCollection.doc(id)
+
+      const doc = await item.get()
+      try {
+        if(!doc.exists) {
+          throw new Error('Item no existe')
+        }
+    
+        if(isMounted) {
+          setProduct({id: doc.id, ...doc.data()})
+        }
+      } catch({message}) {
+        setError(message)
       }
     }
 
@@ -35,7 +43,10 @@ function ItemDetailContainer({greeting}) {
 
   return (
     <div className="container">
-      <ItemDetail item={product} />
+      {error ? 
+        <p>Error: {error}</p>:
+         <ItemDetail item={product} />
+      }
     </div>
   );
 }
