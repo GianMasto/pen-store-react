@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Checkout from "../Checkout/Checkout";
@@ -7,22 +7,34 @@ import "./Cart.css";
 
 function Cart() {
   const { cart, removeItem, clear, getTotalPrice } = useContext(CartContext);
+  const [orderId, setOrderId] = useState();
+
   return (
     <div className="container">
-      {cart.length <= 0 ? (
+      {orderId ? (
         <div className="cart-alert">
-          <p>No hay ítems en el carrito</p>
+          <p className="cart-info">
+            Thank you for your purchase! <br />
+            <br /> Your OrderID is: {orderId}
+          </p>
           <Link className="add-button" to="/">
-            Ir a comprar
+            Go to homepage
+          </Link>
+        </div>
+      ) : cart.length <= 0 ? (
+        <div className="cart-alert">
+          <p>There are no items in the cart.</p>
+          <Link className="add-button" to="/">
+            Go to homepage
           </Link>
         </div>
       ) : (
         <>
           <ul className="cart-list">
             <li className="cart-item">
-              <span>Producto</span>
-              <span>Cantidad</span>
-              <span>Precio</span>
+              <span>Product</span>
+              <span>Quantity</span>
+              <span>Price</span>
               <span></span>
             </li>
             {cart.map(({ quantity, item }) => (
@@ -31,11 +43,12 @@ function Cart() {
                 <span>{quantity}</span>
                 <span>${quantity * item.price}</span>
                 <button
+                  className="add-button"
                   onClick={() => {
                     removeItem(item.id);
                   }}
                 >
-                  Borrar item
+                  Delete item
                 </button>
               </li>
             ))}
@@ -46,15 +59,16 @@ function Cart() {
                 <strong>Total: </strong>${getTotalPrice()}
               </span>
               <button
+                className="add-button"
                 onClick={() => {
                   clear();
                 }}
               >
-                Borrar todo
+                Delete all
               </button>
             </li>
           </ul>
-          <Checkout />
+          <Checkout onOrderIdUpdate={(orderId) => setOrderId(orderId)} />
         </>
       )}
     </div>

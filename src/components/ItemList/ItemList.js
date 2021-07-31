@@ -11,7 +11,7 @@ function ItemList({ items }) {
           ))}
         </div>
       ) : (
-        <p>Cargando productos...</p>
+        <p>Loading products...</p>
       )}
     </>
   );

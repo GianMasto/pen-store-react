@@ -7,4 +7,13 @@
 }
 .cart-item > * {
   width: 25%;
+  display: flex;
+  align-items: center;
+}
+.cart-alert {
+  text-align: center;
+}
+.cart-alert > p{
+  font-weight: 600;
+  margin-bottom: 30px;
 }

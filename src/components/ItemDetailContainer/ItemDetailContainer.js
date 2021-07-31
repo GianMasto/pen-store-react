@@ -5,7 +5,7 @@ import { getFirestore } from "../../firebase";
 import "./ItemDetailContainer.css";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 
-function ItemDetailContainer({ greeting }) {
+function ItemDetailContainer() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [error, setError] = useState();

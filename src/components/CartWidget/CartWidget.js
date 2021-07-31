@@ -12,7 +12,7 @@ function CartWidget() {
     <Link to="/cart" className="cart-widget">
       <button>
         <CartIcon />
-        {getItemsAmount() != 0 && (
+        {getItemsAmount() !== 0 && (
           <span className="counter">{getItemsAmount()}</span>
         )}
       </button>

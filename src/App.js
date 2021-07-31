@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import NavBar from "./components/NavBar/NavBar";
+import NavBarContainer from "./components/NavBarContainer/NavBarContainer";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
@@ -10,16 +10,16 @@ function App() {
   return (
     <CartProvider defaultValue={[]}>
       <BrowserRouter>
-        <NavBar />
+        <NavBarContainer />
         <Switch>
           <Route exact path="/">
-            <ItemListContainer greeting="catálogo" />
+            <ItemListContainer />
           </Route>
           <Route exact path="/category/:categoryId">
-            <ItemListContainer greeting="catálogo" />
+            <ItemListContainer />
           </Route>
           <Route exact path="/item/:id">
-            <ItemDetailContainer greeting="Detalle" />
+            <ItemDetailContainer />
           </Route>
           <Route exact path="/cart">
             <Cart />

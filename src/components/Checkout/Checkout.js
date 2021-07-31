@@ -4,9 +4,10 @@ import "@firebase/firestore";
 
 import CartContext from "../../context/CartContext";
 import { getFirestore } from "../../firebase";
+import "./Checkout.css";
 
-function Checkout() {
-  const { cart, getTotalPrice } = useContext(CartContext);
+function Checkout({ onOrderIdUpdate }) {
+  const { cart, getTotalPrice, clear } = useContext(CartContext);
 
   const db = getFirestore();
   const orders = db.collection("orders");
@@ -18,6 +19,14 @@ function Checkout() {
   });
   const [error, setError] = useState();
   const [orderId, setOrderId] = useState();
+  const [processing, setProcessing] = useState(false);
+
+  useEffect(() => {
+    if (orderId) {
+      clear();
+      onOrderIdUpdate(orderId);
+    }
+  }, [orderId, clear, onOrderIdUpdate]);
 
   const onInputsChange = (e) => {
     const name = e.target.name;
@@ -30,6 +39,7 @@ function Checkout() {
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
+    setProcessing(true);
     try {
       const { id } = await orders.add({
         buyer: inputs,
@@ -38,6 +48,7 @@ function Checkout() {
         total: getTotalPrice(),
       });
       setOrderId(id);
+      setProcessing(false);
     } catch ({ message }) {
       setError(message);
     }
@@ -47,13 +58,11 @@ function Checkout() {
     <>
       {error ? (
         <p>Error: {error}</p>
-      ) : orderId ? (
-        <p>Order ID: {orderId}</p>
       ) : (
         <div className="checkout">
           <form className="checkout-form" onSubmit={(e) => onFormSubmit(e)}>
             <label>
-              <p>Nombre: </p>
+              <p>Name: </p>
               <input
                 type="text"
                 name="name"
@@ -63,7 +72,7 @@ function Checkout() {
               />
             </label>
             <label>
-              <p>Teléfono: </p>
+              <p>Phone: </p>
               <input
                 type="text"
                 name="phone"
@@ -75,14 +84,20 @@ function Checkout() {
             <label>
               <p>Email: </p>
               <input
-                type="text"
+                type="email"
                 name="email"
                 value={inputs.email}
                 onChange={(e) => onInputsChange(e)}
                 required
               />
             </label>
-            <button type="submit">Terminar Compra</button>
+            {processing ? (
+              <p>Processing payment...</p>
+            ) : (
+              <button type="submit" className="add-button">
+                Checkout
+              </button>
+            )}
           </form>
         </div>
       )}

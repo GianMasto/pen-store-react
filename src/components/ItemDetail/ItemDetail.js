@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import CartContext from "../../context/CartContext";
@@ -7,8 +7,13 @@ import "./ItemDetail.css";
 
 function ItemDetail({ item }) {
   const [itemAmount, setItemAmout] = useState();
+  const [isItemInList, setIsItemInList] = useState(false);
 
-  const { addItem } = useContext(CartContext);
+  const { addItem, isInCart } = useContext(CartContext);
+
+  useEffect(() => {
+    setIsItemInList(isInCart(item.id));
+  }, [item, isInCart]);
 
   const onAdd = (count) => {
     setItemAmout(count);
@@ -27,17 +32,17 @@ function ItemDetail({ item }) {
             <h2 className="item-title">{item.title}</h2>
             <p className="item-description">{item.description}</p>
             <p className="item-price">${item.price}</p>
-            {itemAmount ? (
+            {itemAmount || isItemInList ? (
               <Link to="/cart" className="finish-button">
-                Terminar mi compra
+                Finish purchase
               </Link>
             ) : (
-              <ItemCount stock={10} initial={1} onAdd={onAdd} />
+              <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
             )}
           </div>
         </div>
       ) : (
-        <p>Cargando info...</p>
+        <p>Loading info...</p>
       )}
     </>
   );

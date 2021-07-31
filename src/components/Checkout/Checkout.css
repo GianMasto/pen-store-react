@@ -1,0 +1,19 @@
+.checkout {
+  max-width: 750px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.checkout label p {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.checkout label input {
+  margin-bottom: 30px;
+  padding: 15px;
+  width: 100%;
+  border: var(--main-border);
+  border-radius: 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  outline: none;
+}

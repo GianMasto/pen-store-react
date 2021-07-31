@@ -5,7 +5,7 @@ import { getFirestore } from "../../firebase";
 import "./ItemListContainer.css";
 import ItemList from "../../components/ItemList/ItemList";
 
-function ItemListContainer({ greeting }) {
+function ItemListContainer() {
   const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
   const [error, setError] = useState();
@@ -21,7 +21,8 @@ function ItemListContainer({ greeting }) {
       let itemCollection = db.collection("items");
 
       if (categoryId) {
-        itemCollection = itemCollection.where("categoryId", "==", categoryId);
+        const categoryRef = db.collection("categories").doc(categoryId);
+        itemCollection = itemCollection.where("categoryId", "==", categoryRef);
       }
       try {
         const querySnaptshot = await itemCollection.get();
@@ -46,7 +47,7 @@ function ItemListContainer({ greeting }) {
 
   return (
     <div className="item-list-container container">
-      <h2>{categoryId ? `categoría/${categoryId}` : greeting}</h2>
+      <h2>{categoryId ? `category/${categoryId}` : "Products"}</h2>
       {error ? <p>Error: {error}</p> : <ItemList items={products} />}
     </div>
   );
