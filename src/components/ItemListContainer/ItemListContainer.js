@@ -1,54 +1,53 @@
-import {useState, useEffect} from 'react'
-import { useParams } from 'react-router';
-import { getFirestore } from '../../firebase';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import { getFirestore } from "../../firebase";
 
-import './ItemListContainer.css';
-import ItemList from '../../components/ItemList/ItemList'
+import "./ItemListContainer.css";
+import ItemList from "../../components/ItemList/ItemList";
 
-function ItemListContainer({greeting}) {
+function ItemListContainer({ greeting }) {
+  const { categoryId } = useParams();
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState();
 
-  const {categoryId} = useParams()
-  const [products, setProducts] = useState([])
-  const [error, setError] = useState()
-  
   useEffect(() => {
-    let isMounted = true
+    let isMounted = true;
 
     const fetchAndSetProducts = async () => {
-      setProducts([])
-      setError()
+      setProducts([]);
+      setError();
 
-      const db = getFirestore()
-      let itemCollection = db.collection("items")
+      const db = getFirestore();
+      let itemCollection = db.collection("items");
 
-      if(categoryId) {
-        itemCollection = itemCollection.where('categoryId', '==', categoryId)
+      if (categoryId) {
+        itemCollection = itemCollection.where("categoryId", "==", categoryId);
       }
       try {
-        const querySnaptshot = await itemCollection.get()
-        if(querySnaptshot.size === 0) {
-          throw new Error('No hay resultados')
+        const querySnaptshot = await itemCollection.get();
+        if (querySnaptshot.size === 0) {
+          throw new Error("No hay resultados");
         }
-        if(isMounted) {
-          setProducts(querySnaptshot.docs.map(doc => ({id: doc.id, ...doc.data()})))
+        if (isMounted) {
+          setProducts(
+            querySnaptshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+          );
         }
-
-      } catch({message}) {
-        setError(message)
+      } catch ({ message }) {
+        setError(message);
       }
-    }
+    };
 
-    fetchAndSetProducts()
-    return () => {isMounted = false}
-  }, [categoryId])
+    fetchAndSetProducts();
+    return () => {
+      isMounted = false;
+    };
+  }, [categoryId]);
 
   return (
     <div className="item-list-container container">
       <h2>{categoryId ? `categoría/${categoryId}` : greeting}</h2>
-      {error ?
-        <p>Error: {error}</p>: 
-        <ItemList items={products} />
-      }
+      {error ? <p>Error: {error}</p> : <ItemList items={products} />}
     </div>
   );
 }

@@ -3,13 +3,15 @@
 
 pen store is an e-commerce made with ReactJS for the CoderHouse's course
 
-### Technologies used so far
+### Technologies used
 
 - Good' ol plain CSS
 - create-react-app
 - Promises
 - Hooks
 - react-router
+- Context
+- Firebase
 
 ### Demo
 
@@ -28,3 +30,9 @@ npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+You can build the project by running: 
+
+```sh
+npm run build
+```

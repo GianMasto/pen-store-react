@@ -1,12 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import './item.css'
+import "./Item.css";
 
-function Item({item}) {
-
-  
-
-  return(
+function Item({ item }) {
+  return (
     <div className="single-item">
       <Link to={`/item/${item.id}`} className="item-info">
         <div className="item-image-container">
@@ -16,7 +13,7 @@ function Item({item}) {
         <p className="item-price">${item.price}</p>
       </Link>
     </div>
-  )
+  );
 }
 
-export default Item
+export default Item;
