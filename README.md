@@ -19,7 +19,7 @@ You can try a live demo here: https://pen-store.netlify.app/
 
 ![Demo](demo.gif)
 
-### Things I would add to the project in the future
+### Features to add
 
 - Responsiveness
 
