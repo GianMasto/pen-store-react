@@ -1,7 +1,7 @@
 # pen store | ReactJS
 ### E-commerce Proyect
 
-pen store is an e-commerce made with ReactJS for the CoderHouse's course
+pen store is an e-commerce made with ReactJS
 
 You can try a live demo here: https://pen-store.netlify.app/
 
